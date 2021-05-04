@@ -1,7 +1,6 @@
 #include <GL/glut.h>
 
 GLfloat T = 0;
-//GLfloat Cx=0,Cy=0,Cz=3;   // for camera view change
 
 void Spin()
 {
@@ -15,12 +14,6 @@ void MyInit()
 {
     glClearColor(0,0,0,1);
     glEnable(GL_DEPTH_TEST);
-/*
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glFrustum(-1,1,-1,1,2,10);
-    glMatrixMode(GL_MODELVIEW);
-*/
 }
 
 // Fourth create faces
@@ -78,8 +71,6 @@ void display(void)
     glLoadIdentity();
     glRotatef(T,1,1,0);
 
-    //gluLookAt(Cx,Cy,Cz,0,0,0,0,1,0);  // for camera view change
-
     // First call cube function
     Cube(V[0], V[1], V[2], V[3], V[4], V[5], V[6], V[7]);
 
@@ -87,24 +78,6 @@ void display(void)
     glutSwapBuffers();
 }
 
-/*
-// Keyboard handling
-void Key(unsigned char ch, int x, int y)
-{
-    switch(ch)
-    {
-        case 'x' : Cx = Cx - 0.5; break;
-        case 'X' : Cx = Cx + 0.5; break;
-
-        case 'y' : Cy = Cy - 0.5; break;
-        case 'Y' : Cy = Cy + 0.5; break;
-
-        case 'z' : Cz = Cz - 0.5; break;
-        case 'Z' : Cz = Cz + 0.5; break;
-    }
-    glutPostRedisplay();
-}
-*/
 
 /* Program entry point */
 int main(int argc, char *argv[])
@@ -116,7 +89,6 @@ int main(int argc, char *argv[])
     glutCreateWindow("GLUT Shapes");
     MyInit();
     glutDisplayFunc(display);
-    //glutKeyboardFunc(Key);    // for camera view change
     glutIdleFunc(Spin);
     glutMainLoop();
     return 0;
